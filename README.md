@@ -6,3 +6,4 @@ why we need rewrite history;
 what was changed, 
 why it was changed 
 when it was changed
+recovering lost commit ..
