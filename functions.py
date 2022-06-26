@@ -51,4 +51,3 @@ def fizzBuzz(input):
     
 print(fizzBuzz(7))
 
-
