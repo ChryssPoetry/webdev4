@@ -4,6 +4,8 @@
 #creating a class => pascal naming convention; first letter of every world should be uppercase
 from operator import setitem
 
+from webdev4.ecommerce import modules
+
 
 class Point:
     def __init__(self, x,y):
@@ -234,3 +236,11 @@ PointClear = namedtuple("Point", ["x", "y"])
 p3 =PointClear(x=4, y = 5)
 p4 = PointClear(x =4, y = 5)
 print(p3==p4)
+
+from ecommerce.modules import cal_tax, tax
+
+
+
+print(dir(cal_tax))
+
+ #list of path python need to look to find a module
