@@ -144,31 +144,93 @@ print(manager.greet())
 from abc import ABC, abstractmethod
 class InvalidOperationError(Exception):
     pass
-class Stream(ABC):
-    def __init__(self):
-        self.opened = False
+# class Stream(ABC):
+    # def __init__(self):
+    #     self.opened = False
        
-    def open(self):
-        if self.opened:
-            raise InvalidOperationError('invalid exception')
-        self.opened = True
-    def close(self):
-        if not self.opened:
-            raise InvalidOperationError ("invalid operation")
-        self.opened = False
-    @abstractmethod
-    def read(self):
-        pass
-    class FileStream(Stream):
-        def read(self):
-            print("reading data from a stream")
-class NetworkStream(Stream):
-    def read(self):
-        print("reading data from a network")
-class MemoryStream(Stream):
-     def read(self):
-        print("read the data")
+    # def open(self):
+    #     if self.opened:
+    #         raise InvalidOperationError('invalid exception')
+    #     self.opened = True
+    # def close(self):
+    #     if not self.opened:
+    #         raise InvalidOperationError ("invalid operation")
+    #     self.opened = False
+#     @abstractmethod
+#     def read(self):
+#         pass
+#     class FileStream(Stream):
+#         def read(self):
+#             print("reading data from a stream")
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("reading data from a network")
+# class MemoryStream(Stream):
+#      def read(self):
+#         print("read the data")
    
-#abstract base class; provides common code to its derivatives
-stream = MemoryStream()
-stream.open()
+# #abstract base class; provides common code to its derivatives
+# stream = MemoryStream()
+# stream.open()
+
+#polymorphism, when a method takes many forms
+class UIControl(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+class TextBox(UIControl):
+    def draw(self):
+        print("textbox")
+
+class DropDownList(UIControl):
+    def draw(self):
+        print("drop down list")
+def draw(controls):
+    for control in controls:
+        control.draw()
+
+ddl = DropDownList()
+textbox = TextBox()
+draw([ddl, textbox])
+
+#extending the built in types
+
+class Text(str):
+    def duplicate(self):
+        return self + self
+
+text = Text("goat")
+print(text.duplicate())
+
+#extending  a base class
+
+class TrackableClass(list):
+    def append(self, object):
+        print("append called")
+        super().append(object)
+
+track = TrackableClass()
+(track.append(1))
+
+#data classes
+
+class Pointed:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+#python compares object where they are stored in memory
+p1 = Pointed(1,2)
+p2 = Pointed(1,2)
+
+print(p1 == p2) # resulted to false
+print(id(p1))
+print(id(p2))
+
+#dealing with data that has no behaviour, only data
+from collections import namedtuple
+PointClear = namedtuple("Point", ["x", "y"])
+p3 =PointClear(x=4, y = 5)
+p4 = PointClear(x =4, y = 5)
+print(p3==p4)
