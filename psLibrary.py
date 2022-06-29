@@ -95,47 +95,56 @@ with sqlite3.connect("db_movies") as connection:
 #working with date and time
 #simulating sending an email to 10,000 recipient
 
-import time
+# import time
 
-def send_emails():
-    for i in range(10000):
-        pass
+# def send_emails():
+#     for i in range(10000):
+#         pass
 
-starttime = time.time()
-send_emails()
-endtime = time.time()
-duration = endtime - starttime
-print(duration)
+# starttime = time.time()
+# send_emails()
+# endtime = time.time()
+# duration = endtime - starttime
+# print(duration)
 
-#using datetime
-from datetime import datetime, timedelta
+# #using datetime
+# from datetime import datetime, timedelta
 
-dt = datetime(2000, 6, 1) + timedelta(days =1)
-dt2 = datetime.now()
-duration = dt2 -dt
+# # dt = datetime(2000, 6, 1) + timedelta(days =1)
+# # dt2 = datetime.now()
+# # duration = dt2 -dt
 
-print(f"my baby has stayed {duration} on earth")
+# print(f"my baby has stayed {duration} on earth")
 
-# import webbrowser
+# # import webbrowser
 # print("deployment completed")
 # webbrowser.open("https://google.com")
 
 #sending emails to customers based on their interest
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
+# from email.mime.multipart import MIMEMultipart
+# from email.mime.text import MIMEText
+# import smtplib
+# from string import Template
 
-message = MIMEMultipart()
-message["from"] = "franklinnemeka@gmail.com"
-message["to"] = "franklynchrys@gmail.com"
-message["subject"] = "lUsing python to send emails this days"
-message.attach(MIMEText("Body"))
+# template=Template(Path("webdev4/template.html").read_text())
 
-with smtplib.SMTP(host ="smtp.gmail.com", port = 587 ) as smtp:
-    #steps to follow
-    smtp.ehlo() # greeting to the server
-    smtp.starttls() # transport layer security mode
-    smtp.login("franklinnemeka@gmail.com", "frankolin09@")
-    smtp.send_message(message)
-    print("sent ...")
+# message = MIMEMultipart()
+# message["from"] = "franklinnemeka@gmail.com"
+# message["to"] = "franklynchrys@gmail.com"
+# body =template.substitute({"name"})
+# message["subject"] = "lUsing python to send emails this days"
+# message.attach(MIMEText(body, "html"))
+
+# with smtplib.SMTP(host ="smtp.gmail.com", port = 587 ) as smtp:
+#     #steps to follow
+#     smtp.ehlo() # greeting to the server
+#     smtp.starttls() # transport layer security mode
+#     smtp.login("franklinnemeka@gmail.com", "frankolin09@")
+#     smtp.send_message(message)
+#     print("sent ...")
+# #templates
+#html to build the email template
+
+#calling external programs
+
 
