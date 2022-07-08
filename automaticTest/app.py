@@ -1,9 +1,8 @@
-#automatic browsing => using selenim => one can automate browsing
-# from selenium import webdriver
+import os
+import psutil
 
-#creating an instance of chrome
-# browser = webdriver.Chrome()
-# browser.get("https://github.com")
-
-# sign_inLink= browser.find_element("Sign in")
-# sign_inLink.click()
+PROCNAME = "geckodriver" # or chromedriver or IEDriverServer
+for proc in psutil.process_iter():
+    # check whether the process name matches
+    if proc.name() == PROCNAME:
+        proc.kill()
