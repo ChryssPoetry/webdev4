@@ -100,5 +100,40 @@ df_preprocessed = df_reason_date_mod.copy()
 #software component containing the code that would execute the model => module
 # importing the module
 
-from absenteeism_module import * 
+from absenteeism_module import *
+
 #applying the module developed by data scientist, mathematicians, programmers and ml engineers
+
+#loading the new data
+
+# df_new =pd.read_csv("Absenteeism_new_data.csv")
+# print(df_new.info())
+# #the model 
+
+# model = absenteeism_model('model', 'scaler') # making an instance of the class
+# model.load_and_clean_data("Absenteeism_new_data.csv")
+# model.predicted_outputs()
+
+import pymysql
+
+conn = pymysql.connect(database='predicted_outputs', user='root', password="Frankolin09@")
+#Cursor enables one to write codes on mysqll
+
+cursor = conn.cursor()
+# print(df_preprocessed.info())
+
+
+#multiple row insert
+insert_query = 'INSERT INTO predicted_outputs VALUES'
+# print(df_preprocessed.shape)
+for i in range(df_preprocessed.shape[0]):
+    insert_query += '('
+    for j in range(df_preprocessed.shape[1]):
+        insert_query += str(df_preprocessed[df_preprocessed.columns.values[j]][i]) + ','
+    insert_query = insert_query[:-2] + '), '
+    #reverse indexing
+
+# print(insert_query)
+#sending the string to mysql
+cursor.execute(insert_query)
+conn.commit()
