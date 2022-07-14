@@ -43,15 +43,34 @@ class SoftwareEngineers:
 # four principles of object oriented programming
 #inheritance
 #one class taking the attributes and methods of another class
+class Employee:
+    def __init__(self, name, position, age, salary):
+        self.name = name
+        self.position = position
+        self.age = age
+    
+        self.salary = salary
+        
+    
+class Engineers(Employee):
+    def __init__(self, name, position, age, salary,level):
+        super().__init__(name, position, age, salary)
+        self.level =level
+class Designers(Employee):
+    def __init__(self, name, position, age, salary, level):
+        super().__init__(name, position, age, salary)
+        self.level = level
+
+
 
 #polymorphism
 #abstraction
 #encapsulation
 
-se1 = SoftwareEngineers("engineer", "cynthia",23,"senior", 5000)# an instance of the class
-# print(se1.code_in_language("MySQL"))
-# print(se1.code())
-# print(se1.information())
+# se1 = SoftwareEngineers("engineer", "cynthia",23,"senior", 5000)# an instance of the class
+# # print(se1.code_in_language("MySQL"))
+# # print(se1.code())
+# # print(se1.information())
 
-print(SoftwareEngineers.entry_salary(29))
-#with decorators, one can not access the self attribute
+# print(SoftwareEngineers.entry_salary(29))
+# #with decorators, one can not access the self attribute
