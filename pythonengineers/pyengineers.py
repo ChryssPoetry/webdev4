@@ -65,7 +65,39 @@ class Designers(Employee):
 
 #polymorphism
 #abstraction
-#encapsulation
+#encapsulation => instance variables are kept private, only available to the class, not outside the class
+class Software_engineers:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self._salary = None # underscore means private, accessible only internally
+        self.__reallyPrivate = 5000
+        self._no_of_bugs_solved = 0
+    #getter
+    def get_salary(self):
+        return self._salary
+    
+     #setter   
+    def set_salary(self, base_salary):
+        self._salary = self._calculate_salary(base_salary)
+
+    def codes(self):
+        self._no_of_bugs_solved += 1
+    def _calculate_salary(self, base_salary):
+        if self._no_of_bugs_solved < 10:
+            return base_salary
+        if self._no_of_bugs_solved > 100:
+            return base_salary * 2
+        return base_salary * 3
+     
+
+se = Software_engineers("chryss", 12)
+for i in range(70):
+    print(se.codes())
+se.set_salary(6000)
+print(se.get_salary())
+
+
 
 # se1 = SoftwareEngineers("engineer", "cynthia",23,"senior", 5000)# an instance of the class
 # # print(se1.code_in_language("MySQL"))
